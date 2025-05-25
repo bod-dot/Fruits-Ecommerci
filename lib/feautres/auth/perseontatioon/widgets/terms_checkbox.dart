@@ -3,15 +3,12 @@ import 'package:flutter/material.dart';
 import '../../../../core/utils/app_text_style.dart';
 import '../../../../core/utils/color_app.dart';
 
-class TermsCheckbox extends StatefulWidget {
-  const TermsCheckbox({super.key});
+class TermsCheckbox extends StatelessWidget {
+  const TermsCheckbox(
+      {super.key, required this.isAgra, required this.onChanged});
+  final bool isAgra;
+  final ValueChanged<bool> onChanged;
 
-  @override
-  State<TermsCheckbox> createState() => _TermsCheckboxState();
-}
-
-class _TermsCheckboxState extends State<TermsCheckbox> {
-  bool isAgra = false;
   @override
   Widget build(BuildContext context) {
     return Transform.translate(
@@ -26,9 +23,7 @@ class _TermsCheckboxState extends State<TermsCheckbox> {
                 )),
             value: isAgra,
             onChanged: (value) {
-              setState(() {
-                isAgra = value!;
-              });
+              onChanged(value!);
             },
           ),
           Expanded(
@@ -57,5 +52,6 @@ class _TermsCheckboxState extends State<TermsCheckbox> {
         ],
       ),
     );
+    ;
   }
 }

@@ -52,7 +52,7 @@ class _CreateNewAccountBodyState extends State<CreateNewAccountBody> {
             ),
             TermsCheckbox(
               isAgra: isAgra,
-              onChange: (value) {
+              onChanged: (value) {
                 isAgra = value;
                 setState(() {});
               },
