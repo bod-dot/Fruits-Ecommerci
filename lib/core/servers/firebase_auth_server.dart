@@ -30,4 +30,29 @@ class FirebaseAuthServer {
       throw CustomException(message: 'يوجد خطاء يرجاء المحاولة لاحقا');
     }
   }
+
+  Future<User> signInWithEmailAndPassword(
+      {required String email, required String password}) async {
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return credential.user!;
+    } on FirebaseAuthException catch (e) {
+      log(' exception: FirebaseAuthServer.signInWithEmailAndPassword: ${e.message} ,  ${e.code}');
+      if (e.code == 'user-not-found') {
+        throw CustomException(message: 'المستخدم غير موجود');
+      } else if (e.code == 'wrong-password') {
+        throw CustomException(message: 'كلمة السر غير صحيحة');
+      } else if (e.code == 'network-request-failed') {
+        throw CustomException(message: 'خطأ في الاتصال بالانترنت');
+      } else {
+        throw CustomException(message: 'يوجد خطاء يرجاء المحاولة لاحقا');
+      }
+    } catch (e) {
+      log(' exception: FirebaseAuthServer.signInWithEmailAndPassword: $e');
+      throw CustomException(message: 'يوجد خطاء يرجاء المحاولة لاحقا');
+    }
+  }
 }
