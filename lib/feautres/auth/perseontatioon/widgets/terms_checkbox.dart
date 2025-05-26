@@ -52,6 +52,5 @@ class TermsCheckbox extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }

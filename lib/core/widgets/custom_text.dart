@@ -6,16 +6,25 @@ class CustomText extends StatelessWidget {
       required this.hit,
       this.suffix,
       this.keyboardType,
-      this.obscureText});
+      this.obscureText = false,
+      this.onSaved});
   final String hit;
   final Widget? suffix;
   final TextInputType? keyboardType;
   final bool? obscureText;
+  final void Function(String?)? onSaved;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      obscureText: obscureText ?? false,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'هذا الحقل مطلوب';
+        }
+        return null;
+      },
+      onSaved: onSaved,
+      obscureText: obscureText!,
       keyboardType: keyboardType,
       decoration: InputDecoration(
           filled: true,

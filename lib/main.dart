@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fruit_e_commerce/core/helper_function/on_generate_rout.dart';
 import 'package:fruit_e_commerce/core/helper_function/shared_preferences.dart';
+import 'package:fruit_e_commerce/core/servers/bloc_observ.dart';
+import 'package:fruit_e_commerce/core/servers/get_it_servers.dart';
 import 'package:fruit_e_commerce/core/utils/color_app.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -14,6 +17,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await Shared.init();
+  setupGetIt();
+  Bloc.observer = MyBlocObserver();
   runApp(const FruitsEcommerce());
 }
 
