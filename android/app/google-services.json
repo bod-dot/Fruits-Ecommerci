@@ -1,9 +1,105 @@
 {
   "project_info": {
-    "project_number": "628797518380",
-    "project_id": "fruit-hup-218a8",
-    "storage_bucket": "fruit-hup-218a8.firebasestorage.app"
+    "project_number": "589012893254",
+    "project_id": "fruit-e-commerce-572db",
+    "storage_bucket": "fruit-e-commerce-572db.firebasestorage.app"
   },
-  "client": [],
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589012893254:android:76e1999990cf2535155447",
+        "android_client_info": {
+          "package_name": "com.example.fruit_e_commerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWyxTpWjsmw9RcUQon-Rb79cq2HA-yHTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589012893254:android:65072f85baef7ce5155447",
+        "android_client_info": {
+          "package_name": "com.example.fruitecommerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWyxTpWjsmw9RcUQon-Rb79cq2HA-yHTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589012893254:android:e42fd479ed6f1656155447",
+        "android_client_info": {
+          "package_name": "com.exaple.fruit_e_commerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWyxTpWjsmw9RcUQon-Rb79cq2HA-yHTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589012893254:android:fae758c4e10bd1a5155447",
+        "android_client_info": {
+          "package_name": "com.fruit_e_commerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWyxTpWjsmw9RcUQon-Rb79cq2HA-yHTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589012893254:android:9f2bee7f8fc575b6155447",
+        "android_client_info": {
+          "package_name": "com.fruit_e_commerce.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWyxTpWjsmw9RcUQon-Rb79cq2HA-yHTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
   "configuration_version": "1"
 }

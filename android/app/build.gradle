@@ -1,5 +1,8 @@
 plugins {
     id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    // END: FlutterFire Configuration
     id "kotlin-android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
@@ -33,6 +36,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.fruit_e_commerce"
@@ -42,7 +49,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
-       // manifestPlaceholders = [applicationName: "com.example.fruit_e_commerce"]
+        // manifestPlaceholders = [applicationName: "com.example.fruit_e_commerce"]
     }
 
     buildTypes {
@@ -52,8 +59,31 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+
+    // --- START: Added for Kotlin Duplicate Class Fix ---
+    configurations.all {
+        resolutionStrategy {
+            // Force a specific version for Kotlin standard libraries to resolve conflicts.
+            // IMPORTANT: Make sure this version matches the 'kotlin_version' in your project's
+            // top-level build.gradle (android/build.gradle). Common versions are 1.8.22 or 1.9.0.
+            // If you're unsure, try 1.8.22 first.
+            force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22'
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22'
+        }
+    }
+    // --- END: Added for Kotlin Duplicate Class Fix ---
 }
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    // START: Added to ensure Kotlin standard libraries are pulled with a consistent version
+    // If you explicitly declare kotlin-stdlib in your dependencies, make sure its version
+    // matches the 'force' versions above. Often, it's not needed here if other
+    // dependencies pull it in correctly.
+    // implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.22"
+    // END: Added to ensure Kotlin standard libraries
 }
