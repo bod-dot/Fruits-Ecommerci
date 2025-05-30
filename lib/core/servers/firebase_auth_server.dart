@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruit_e_commerce/core/errors/exception.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthServer {
   Future<User> createUserWithEmailAndPassword(
@@ -47,6 +48,9 @@ class FirebaseAuthServer {
         throw CustomException(message: 'كلمة السر غير صحيحة');
       } else if (e.code == 'network-request-failed') {
         throw CustomException(message: 'خطأ في الاتصال بالانترنت');
+      } else if (e.code == 'invalid-credential') {
+        throw CustomException(
+            message: '  البريد الالكتروني او كلمة السر غير صحيح');
       } else {
         throw CustomException(message: 'يوجد خطاء يرجاء المحاولة لاحقا');
       }
@@ -54,5 +58,19 @@ class FirebaseAuthServer {
       log(' exception: FirebaseAuthServer.signInWithEmailAndPassword: $e');
       throw CustomException(message: 'يوجد خطاء يرجاء المحاولة لاحقا');
     }
+  }
+
+  Future<User> signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    return (await FirebaseAuth.instance.signInWithCredential(credential)).user!;
   }
 }
