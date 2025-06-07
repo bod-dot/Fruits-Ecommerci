@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_e_commerce/feautres/auth/perseontatioon/view/create_new_account_view.dart';
 import 'package:fruit_e_commerce/feautres/auth/perseontatioon/view/login_view.dart';
+import 'package:fruit_e_commerce/feautres/home/presentation/views/home_view.dart';
 
 import '../../feautres/on_bording/perseontation/views/on_bording.dart';
 import '../../feautres/splash/presentation/spalsh_view.dart';
@@ -24,6 +25,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case CreateNewAccountView.routeName:
       return MaterialPageRoute(
         builder: (_) => const CreateNewAccountView(),
+      );
+    case HomeView.routeName:
+      return MaterialPageRoute(
+        builder: (_) => const HomeView(),
       );
     default:
       return MaterialPageRoute(

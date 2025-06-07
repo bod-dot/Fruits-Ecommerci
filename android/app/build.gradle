@@ -80,6 +80,8 @@ flutter {
 }
 
 dependencies {
+     implementation 'com.facebook.android:facebook-login:latest.release'
+
     // START: Added to ensure Kotlin standard libraries are pulled with a consistent version
     // If you explicitly declare kotlin-stdlib in your dependencies, make sure its version
     // matches the 'force' versions above. Often, it's not needed here if other

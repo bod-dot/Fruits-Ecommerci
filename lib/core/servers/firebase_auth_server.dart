@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:fruit_e_commerce/core/errors/exception.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -72,5 +73,31 @@ class FirebaseAuthServer {
     );
 
     return (await FirebaseAuth.instance.signInWithCredential(credential)).user!;
+  }
+
+  Future<User> signInWithFacebook() async {
+    try {
+      final LoginResult loginResult = await FacebookAuth.instance.login();
+
+      final OAuthCredential facebookAuthCredential =
+          FacebookAuthProvider.credential(loginResult.accessToken!.token);
+
+      return (await FirebaseAuth.instance
+              .signInWithCredential(facebookAuthCredential))
+          .user!;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'account-exists-with-different-credential') {
+        throw CustomException(message: ' هذا الحساب مرتبط بحساب اخر');
+      } else {
+        throw CustomException(message: 'يوجد خطاء يرجاء المحاولة لاحقا');
+      }
+    } catch (e) {
+      log(' exception: FirebaseAuthServer.signInWithFacebook: $e');
+      return throw CustomException(message: 'يوجد خطاء يرجاء المحاولة لاحقا');
+    }
+  }
+
+  Future deleteUser() async {
+    FirebaseAuth.instance.currentUser!.delete();
   }
 }

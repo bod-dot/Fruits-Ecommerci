@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -90,7 +88,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               const SizedBox(
                 height: 18,
               ),
-              SocelLoginButton(
+              SocleLoginButton(
                   onPressed: () {
                     BlocProvider.of<LoginUserCubit>(context).loginWithGoogle();
                   },
@@ -99,16 +97,19 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               const SizedBox(
                 height: 18,
               ),
-              SocelLoginButton(
+              SocleLoginButton(
                   onPressed: () {},
                   image: Assets.imageAppleSocialIcons,
                   text: 'تسجيل بواسطة أبل'),
               const SizedBox(
                 height: 18,
               ),
-              SocelLoginButton(
-                  onPressed: () {},
-                  image: Assets.imageFacebocckSocialIcons,
+              SocleLoginButton(
+                  onPressed: () {
+                    BlocProvider.of<LoginUserCubit>(context)
+                        .loginWithFacebook();
+                  },
+                  image: Assets.imageFacebookSocialIcons,
                   text: 'تسجيل بواسطة فيسبوك'),
             ],
           ),

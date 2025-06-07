@@ -17,6 +17,7 @@ class CreateNewAccountBodyCubit extends StatelessWidget {
       listener: (context, state) {
         if (state is CreateNewUserSuccess) {
           Navigator.pop(context);
+          buildErrorSankBar(context, 'تم إنشاء الحساب بنجاح');
         } else if (state is CreateNewUserFailures) {
           buildErrorSankBar(context, state.message);
         }

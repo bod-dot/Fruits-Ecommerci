@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_e_commerce/core/utils/app_text_style.dart';
 
-class SocelLoginButton extends StatelessWidget {
-  const SocelLoginButton(
+class SocleLoginButton extends StatelessWidget {
+  const SocleLoginButton(
       {super.key,
       required this.onPressed,
       required this.image,

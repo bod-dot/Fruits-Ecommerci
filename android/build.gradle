@@ -1,5 +1,19 @@
+// هذا هو القسم الذي يجب إضافته وتعديله
+// يجب تعريف المستودعات هنا حتى يتمكن Gradle من تحميل الإضافات اللازمة للبناء
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // تم نقل هذا السطر إلى هنا ليكون ضمن نفس النطاق
+        classpath 'com.android.tools.build:gradle:8.4.2'
+    }
+}
+
 allprojects {
     repositories {
+        // هذه المستودعات خاصة بالمكتبات التي يستخدمها تطبيقك
         google()
         mavenCentral()
     }
